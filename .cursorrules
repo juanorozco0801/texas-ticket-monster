@@ -1,0 +1,214 @@
+# .cursorrules — Texas Ticket Monster (MVP Frontend Only)
+
+You are working on **Texas Ticket Monster**, a **Next.js (App Router)** MVP hosted on **Vercel**.
+This MVP is **frontend-only**: all data is **mocked** (no real backend). The goal is to **sell the idea** to a client by demonstrating:
+- Marketing pages (like a traffic ticket attorney site)
+- Upload multiple tickets (mock file handling)
+- Price per ticket (mock pricing)
+- Checkout flow (mock Stripe-style success/cancel)
+- Bilingual ES/EN routing
+
+## 1) Product Context (Business Model)
+Texas Ticket Monster is a lead + payment funnel for Texas traffic-related legal services:
+- Categories: **Traffic Tickets**, **DUI**, **Other criminal traffic offenses**
+- Core flow:
+  1) User lands on marketing pages and chooses category
+  2) User uploads **one or more tickets**
+  3) App charges **per ticket** (line-item pricing)
+  4) User proceeds to checkout and completes payment (mock)
+  5) User gets a confirmation (mock case id)
+
+### MVP Constraints
+- No backend, no database, no real Stripe charges
+- Store data only in memory (zustand) and optionally localStorage for demo
+- Handle files as **File metadata only** (name, size, type), never upload anywhere
+
+## 2) Routing & Pages (App Router)
+Use i18n prefix routing with a `[locale]` segment.
+
+Required locales:
+- `en`
+- `es`
+
+Route structure:
+- `app/[locale]/layout.tsx` — locale providers, header/footer
+- `app/[locale]/page.tsx` — Home
+- `app/[locale]/(marketing)/how-it-works/page.tsx`
+- `app/[locale]/(marketing)/success-stories/page.tsx`
+- `app/[locale]/(marketing)/faq/page.tsx`
+- `app/[locale]/(marketing)/contact/page.tsx`
+
+Case category pages:
+- `app/[locale]/(cases)/traffic-tickets/page.tsx`
+- `app/[locale]/(cases)/dui/page.tsx`
+- `app/[locale]/(cases)/other-offenses/page.tsx`
+
+Flow pages:
+- `app/[locale]/(flow)/upload/page.tsx` — multi-ticket form
+- `app/[locale]/(flow)/checkout/page.tsx` — summary + terms + pay
+- `app/[locale]/(flow)/payment/success/page.tsx`
+- `app/[locale]/(flow)/payment/cancel/page.tsx`
+
+### Routing Rules
+- Never hardcode locale in links. Use locale-aware link helpers.
+- The language switch must preserve the current path where possible.
+- All marketing CTAs route into `/[locale]/upload`.
+
+## 3) State Management (Zustand)
+Use zustand for global state:
+- Customer info
+- Tickets list
+- Derived totals
+- Locale (optional, derived from route)
+
+Required store shape:
+- `customer`: { fullName, idNumber, email, phone }
+- `tickets`: Array<{
+    id: string;
+    category: 'traffic' | 'dui' | 'other';
+    ticketNumber: string;
+    file: { name: string; size: number; type: string };
+    notes?: string;
+    price: number;
+  }>
+- `actions`: setCustomer, addTicket, removeTicket, clearAll
+- `selectors`: ticketCount, totalAmount, totalsByCategory
+
+Rules:
+- Do not mutate arrays/objects in place.
+- Store must be serializable if localStorage persistence is used.
+- Pricing is computed in one place only (a pricing function/module).
+
+## 4) Forms (React Hook Form + Zod)
+All user inputs must be validated using **Zod** with **@hookform/resolvers/zod**.
+
+Ticket form:
+- category (enum)
+- ticketNumber (string, min 3)
+- ticketFile (FileList, required, accept: pdf/png/jpg/jpeg)
+- notes (optional)
+
+Customer form section (collected once):
+- fullName (min 2)
+- idNumber (min 3)
+- email (valid email)
+- phone (basic validation)
+
+Rules:
+- Use `mode: 'onBlur'` for better UX.
+- Separate schemas: `CustomerSchema`, `TicketSchema`.
+- When adding a ticket, preserve customer fields and reset only ticket fields.
+- Never store the raw File object in state; store only metadata.
+
+## 5) Pricing Rules (Mock)
+Pricing is **per ticket** and depends on category:
+- traffic: fixed (e.g. 99)
+- dui: fixed (e.g. 199)
+- other: fixed (e.g. 149)
+
+Rules:
+- Implement in `src/mocks/pricing.ts` as a typed map.
+- Use a function `getTicketPrice(category)` and never hardcode prices in UI.
+
+## 6) Checkout & Payment (Mock)
+Checkout behavior:
+- Show line items (tickets) with category + ticket number + price
+- Terms checkbox required
+- Pay button triggers a fake payment step:
+  - Show modal "Processing payment..."
+  - After delay, route to `/payment/success`
+  - Provide a "Cancel" path to `/payment/cancel`
+
+Success page:
+- Show mock case id: `TTM-${randomShortId}`
+- Summary of tickets and total
+- Optionally clear store after rendering
+
+Cancel page:
+- Explain payment cancelled
+- Button back to checkout
+
+Rules:
+- Do not integrate real Stripe for MVP
+- Do not collect sensitive data beyond mock basics
+- No SSNs, no DOB, no card data (ever)
+
+## 7) UI/UX Libraries & Components
+Use:
+- shadcn/ui for base components
+- tailwindcss for styling
+- lucide-react icons
+
+Rules:
+- Use responsive layouts (mobile-first)
+- Use consistent spacing scale
+- Avoid complex animations; focus on clarity
+- Use accessible labels, aria attributes, and semantic HTML
+- Always show error messages near fields
+
+## 8) Code Organization
+Required structure:
+- `src/app` — routes
+- `src/components` — reusable UI
+- `src/components/flow` — upload/checkout components
+- `src/components/marketing` — marketing blocks
+- `src/store` — zustand
+- `src/mocks` — mock data
+- `src/lib` — helpers (cn, pricing, formatters)
+- `src/i18n` — dictionaries, locale config
+
+Rules:
+- Do not create god-components. Keep pages thin; compose from components.
+- Do not duplicate copy. Put copy in i18n dictionaries.
+- Keep business logic out of UI components.
+
+## 9) TypeScript Rules (Strict)
+- Enable strict TS.
+- No `any`.
+- Use discriminated unions for category types.
+- Prefer `type` for unions and `interface` for object shapes used with extension.
+- All exports must be typed.
+- Use `satisfies` for mock data where applicable.
+- No implicit `undefined` checks; use exact optional properties.
+
+## 10) ESLint / Code Quality Rules
+- Use `eslint-config-next`.
+- Additional rules to enforce:
+  - `@typescript-eslint/no-explicit-any`: error
+  - `@typescript-eslint/consistent-type-imports`: error
+  - `@typescript-eslint/no-unused-vars`: error (ignore underscore args)
+  - `no-console`: warn (allowed in mocks only)
+  - `react-hooks/rules-of-hooks`: error
+  - `react-hooks/exhaustive-deps`: warn
+  - `import/order`: error (group + alphabetize)
+
+General practices:
+- Keep components pure.
+- No side effects in render.
+- Use `useMemo` only when necessary.
+- Avoid prop drilling: use store selectors.
+
+## 11) Accessibility & SEO (MVP level)
+- Each page must set metadata title/description (locale-specific).
+- Use semantic headings (one h1 per page).
+- Images must have alt text.
+- Buttons/links must be keyboard navigable.
+
+## 12) Definition of Done (MVP)
+The MVP is complete when:
+- All pages render in EN and ES
+- Language switch works and preserves route
+- User can add N tickets with file metadata
+- Total updates correctly
+- Checkout shows line items and requires terms
+- Pay routes to success and shows mock case id
+- Cancel routes to cancel page
+- No runtime errors and no TS errors
+- Vercel deployment works with clean build
+
+## 13) Non-goals (Explicit)
+- No real Stripe integration
+- No backend API routes for persistence
+- No real file upload/storage
+- No admin portal
+- No authentication
