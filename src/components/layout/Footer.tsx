@@ -30,8 +30,12 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-monster-orange rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">🦖</span>
+              <div className="w-10 h-10">
+                <img 
+                  src="/LogoVariacion2_Blanco.png" 
+                  alt={t('contact')}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <span className="font-heading font-bold text-white text-lg">
