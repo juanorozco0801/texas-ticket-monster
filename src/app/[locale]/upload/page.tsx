@@ -11,10 +11,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { customerSchema, ticketSchema, type CustomerFormData, type TicketFormData } from '@/lib/validations';
 import { useTicketStore, useCustomer } from '@/store/tickets.store';
-import { pricing, getTicketPrice } from '@/mocks/pricing';
+import { pricing } from '@/mocks/pricing';
 import { TicketList } from '@/components/flow/TicketList';
 import { PriceSummary } from '@/components/flow/PriceSummary';
 import { Upload, Plus, ArrowRight } from 'lucide-react';
@@ -73,7 +72,6 @@ export default function UploadPage() {
 
   const onTicketSubmit = (data: TicketFormData) => {
     const file = data.ticketFile[0];
-    const price = getTicketPrice(data.category);
 
     addTicket({
       type: data.category,
@@ -116,7 +114,7 @@ export default function UploadPage() {
             Upload Your Tickets
           </h1>
           <p className="text-lg text-navy-deep/70">
-            Add one or more tickets and we'll calculate your total. Get 15% off each additional ticket!
+            Add one or more tickets and we&apos;ll calculate your total. Get 15% off each additional ticket!
           </p>
         </div>
 
@@ -155,7 +153,7 @@ export default function UploadPage() {
 
                     <div className="space-y-2">
                       <Label htmlFor="idNumber">
-                        ID / Driver's License # <span className="text-red-500">*</span>
+                        ID / Driver&apos;s License # <span className="text-red-500">*</span>
                       </Label>
                       <Input
                         id="idNumber"

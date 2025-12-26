@@ -4,10 +4,17 @@ import { TicketType, pricing, multiTicketDiscount } from '@/mocks/pricing';
 
 // Customer information
 export interface Customer {
-  firstName: string;
-  lastName: string;
+  fullName: string;
+  idNumber: string;
   email: string;
   phone: string;
+}
+
+// File metadata (not storing actual file, just metadata)
+export interface FileMetadata {
+  name: string;
+  size: number;
+  type: string;
 }
 
 // Individual ticket
@@ -15,9 +22,11 @@ export interface Ticket {
   id: string;
   type: TicketType;
   description: string;
+  ticketNumber?: string;
+  file?: FileMetadata;
+  notes?: string;
   violationDate?: string;
   courtDate?: string;
-  ticketNumber?: string;
   location?: string;
   imageUrl?: string;
   createdAt: Date;
@@ -217,18 +226,12 @@ export const usePriceBreakdown = (): PriceBreakdown => {
     (a, b) => pricing[b.type].price - pricing[a.type].price
   );
 
-  let subtotal = 0;
-  let total = 0;
-
   const breakdownTickets = sortedTickets.map((ticket, index) => {
     const basePrice = pricing[ticket.type].price;
-    subtotal += basePrice;
-
     const hasDiscount = index > 0;
     const finalPrice = hasDiscount
       ? basePrice * (1 - multiTicketDiscount.percentage / 100)
       : basePrice;
-    total += finalPrice;
 
     return {
       id: ticket.id,
@@ -239,6 +242,9 @@ export const usePriceBreakdown = (): PriceBreakdown => {
       hasDiscount,
     };
   });
+
+  const subtotal = breakdownTickets.reduce((sum, t) => sum + t.basePrice, 0);
+  const total = breakdownTickets.reduce((sum, t) => sum + t.finalPrice, 0);
 
   return {
     tickets: breakdownTickets,

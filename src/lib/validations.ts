@@ -12,8 +12,8 @@ export type CustomerFormData = z.infer<typeof customerSchema>;
 
 // Ticket Schema
 export const ticketSchema = z.object({
-  category: z.enum(['traffic', 'dui', 'other'], {
-    required_error: 'Please select a ticket type',
+  category: z.enum(['traffic', 'dui', 'other']).refine((val) => val !== undefined, {
+    message: 'Please select a ticket type',
   }),
   ticketNumber: z.string().min(3, 'Ticket number must be at least 3 characters'),
   ticketFile: z
