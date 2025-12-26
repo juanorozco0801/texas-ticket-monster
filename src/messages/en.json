@@ -1,0 +1,107 @@
+{
+  "common": {
+    "uploadTickets": "Upload Tickets",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "viewAll": "View All",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "nav": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "dui": "DUI",
+    "trafficTickets": "Traffic Tickets",
+    "otherOffenses": "Other Offenses",
+    "successStories": "Success Stories",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "upload": "Upload",
+    "checkout": "Checkout"
+  },
+  "header": {
+    "logoAlt": "Texas Ticket Monster",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "footer": {
+    "tagline": "Fighting Texas tickets so you don't have to.",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "disclaimer": "Disclaimer",
+    "phone": "1-888-TX-TICKET",
+    "email": "help@texasticketmonster.com",
+    "hours": "Mon-Fri 8am-6pm CST",
+    "copyright": "© {year} Texas Ticket Monster. All rights reserved.",
+    "disclaimerText": "The information on this website is for general information purposes only. Nothing on this site should be taken as legal advice for any individual case or situation. This information is not intended to create, and receipt or viewing does not constitute, an attorney-client relationship."
+  },
+  "home": {
+    "heroTitle": "Got a Texas Ticket?",
+    "heroTitleHighlight": "Let the Monster Fight It!",
+    "heroSubtitle": "Upload. Pay per ticket. We handle the rest — no court appearances needed.",
+    "heroCta": "Upload Your Tickets",
+    "statsTickets": "10,000+",
+    "statsTicketsLabel": "Tickets Handled",
+    "statsSuccess": "95%",
+    "statsSuccessLabel": "Success Rate",
+    "statsReviews": "500+",
+    "statsReviewsLabel": "5-Star Reviews"
+  },
+  "services": {
+    "title": "What Can We Fight For You?",
+    "dui": {
+      "title": "DUI / DWI Defense",
+      "description": "Protect your license, minimize penalties, and keep your record clean."
+    },
+    "traffic": {
+      "title": "Traffic Tickets",
+      "description": "Speeding, red lights, stop signs — we handle them all."
+    },
+    "other": {
+      "title": "Criminal Traffic Offenses",
+      "description": "Reckless driving, suspended license, and more serious charges."
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Three simple steps to fight your ticket",
+    "step1": {
+      "title": "Upload Your Ticket",
+      "description": "Snap a photo or upload your ticket. Add multiple tickets at once."
+    },
+    "step2": {
+      "title": "Pay Per Ticket",
+      "description": "Transparent pricing. No hidden fees. Multi-ticket discounts available."
+    },
+    "step3": {
+      "title": "We Handle It",
+      "description": "Our attorneys fight for you. No court appearance needed."
+    }
+  },
+  "trust": {
+    "title": "Why Texas Trusts the Monster",
+    "testimonial1": "Got my speeding ticket completely dismissed. No points, no fine!",
+    "testimonial2": "They handled my DUI case professionally. Kept my license!",
+    "testimonial3": "Three tickets from one day — all dismissed. Unbelievable service!"
+  },
+  "cta": {
+    "title": "Ready to Fight Your Ticket?",
+    "subtitle": "Upload your ticket now and let the monster go to work.",
+    "button": "Upload Tickets Now"
+  },
+  "language": {
+    "en": "English",
+    "es": "Español",
+    "switchTo": "Switch to {language}"
+  }
+}
+

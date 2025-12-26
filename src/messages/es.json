@@ -1,0 +1,107 @@
+{
+  "common": {
+    "uploadTickets": "Subir Multas",
+    "learnMore": "Más Información",
+    "getStarted": "Comenzar",
+    "contactUs": "Contáctanos",
+    "viewAll": "Ver Todos",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito"
+  },
+  "nav": {
+    "home": "Inicio",
+    "howItWorks": "Cómo Funciona",
+    "dui": "DUI",
+    "trafficTickets": "Multas de Tráfico",
+    "otherOffenses": "Otras Ofensas",
+    "successStories": "Casos de Éxito",
+    "faq": "Preguntas",
+    "contact": "Contacto",
+    "upload": "Subir",
+    "checkout": "Pagar"
+  },
+  "header": {
+    "logoAlt": "Texas Ticket Monster",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú"
+  },
+  "footer": {
+    "tagline": "Peleamos tus multas de Texas para que tú no tengas que hacerlo.",
+    "quickLinks": "Enlaces Rápidos",
+    "legal": "Legal",
+    "contact": "Contacto",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio",
+    "disclaimer": "Aviso Legal",
+    "phone": "1-888-TX-TICKET",
+    "email": "help@texasticketmonster.com",
+    "hours": "Lun-Vie 8am-6pm CST",
+    "copyright": "© {year} Texas Ticket Monster. Todos los derechos reservados.",
+    "disclaimerText": "La información en este sitio web es solo para propósitos informativos generales. Nada en este sitio debe tomarse como consejo legal para ningún caso o situación individual. Esta información no tiene la intención de crear, y su recepción o visualización no constituye, una relación abogado-cliente."
+  },
+  "home": {
+    "heroTitle": "¿Tienes una Multa en Texas?",
+    "heroTitleHighlight": "¡Deja que el Monstruo la Pelee!",
+    "heroSubtitle": "Sube. Paga por multa. Nosotros hacemos el resto — sin ir a la corte.",
+    "heroCta": "Sube Tus Multas",
+    "statsTickets": "10,000+",
+    "statsTicketsLabel": "Multas Manejadas",
+    "statsSuccess": "95%",
+    "statsSuccessLabel": "Tasa de Éxito",
+    "statsReviews": "500+",
+    "statsReviewsLabel": "Reseñas 5 Estrellas"
+  },
+  "services": {
+    "title": "¿Qué Podemos Pelear Por Ti?",
+    "dui": {
+      "title": "Defensa DUI / DWI",
+      "description": "Protege tu licencia, minimiza las penalidades y mantén tu récord limpio."
+    },
+    "traffic": {
+      "title": "Multas de Tráfico",
+      "description": "Exceso de velocidad, luces rojas, señales de alto — las manejamos todas."
+    },
+    "other": {
+      "title": "Delitos de Tráfico Criminal",
+      "description": "Conducción temeraria, licencia suspendida y cargos más serios."
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "Tres simples pasos para pelear tu multa",
+    "step1": {
+      "title": "Sube Tu Multa",
+      "description": "Toma una foto o sube tu multa. Agrega múltiples multas a la vez."
+    },
+    "step2": {
+      "title": "Paga Por Multa",
+      "description": "Precios transparentes. Sin cargos ocultos. Descuentos por múltiples multas."
+    },
+    "step3": {
+      "title": "Nosotros lo Manejamos",
+      "description": "Nuestros abogados pelean por ti. Sin ir a la corte."
+    }
+  },
+  "trust": {
+    "title": "Por Qué Texas Confía en el Monstruo",
+    "testimonial1": "Mi multa por exceso de velocidad fue desestimada. ¡Sin puntos, sin multa!",
+    "testimonial2": "Manejaron mi caso de DUI profesionalmente. ¡Mantuve mi licencia!",
+    "testimonial3": "Tres multas de un día — todas desestimadas. ¡Servicio increíble!"
+  },
+  "cta": {
+    "title": "¿Listo Para Pelear Tu Multa?",
+    "subtitle": "Sube tu multa ahora y deja que el monstruo trabaje.",
+    "button": "Sube Tus Multas Ahora"
+  },
+  "language": {
+    "en": "English",
+    "es": "Español",
+    "switchTo": "Cambiar a {language}"
+  }
+}
+

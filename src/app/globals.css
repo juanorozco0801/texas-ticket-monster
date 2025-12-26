@@ -1,26 +1,202 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Fonts */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-sans: var(--font-body);
+  
+  /* Brand Colors */
+  --color-monster-orange: #FF5B23;
+  --color-monster-orange-dark: #E54D1A;
+  --color-sky-cyan: #ADE6ED;
+  --color-sky-cyan-light: #D6F3F7;
+  --color-electric-blue: #3A39FF;
+  --color-electric-blue-dark: #2D2CC7;
+  --color-sunny-yellow: #FAD062;
+  --color-sunny-yellow-light: #FCE4A0;
+  --color-navy-deep: #1C174F;
+  --color-navy-light: #2E2875;
+  
+  /* Theme Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.75rem;
+  
+  /* Light Theme - Texas Ticket Monster Brand */
+  --background: #F8FCFC;
+  --foreground: #1C174F;
+  
+  --card: #FFFFFF;
+  --card-foreground: #1C174F;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #1C174F;
+  
+  --primary: #FF5B23;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #ADE6ED;
+  --secondary-foreground: #1C174F;
+  
+  --muted: #E5E7EB;
+  --muted-foreground: #4B5563;
+  
+  --accent: #3A39FF;
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: #ADE6ED;
+  --input: #ADE6ED;
+  --ring: #3A39FF;
+}
+
+.dark {
+  --background: #1C174F;
+  --foreground: #F8FCFC;
+  
+  --card: #2E2875;
+  --card-foreground: #F8FCFC;
+  
+  --popover: #2E2875;
+  --popover-foreground: #F8FCFC;
+  
+  --primary: #FF5B23;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #2E2875;
+  --secondary-foreground: #ADE6ED;
+  
+  --muted: #2E2875;
+  --muted-foreground: #ADE6ED;
+  
+  --accent: #3A39FF;
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: #2E2875;
+  --input: #2E2875;
+  --ring: #3A39FF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Utility Classes */
+@layer utilities {
+  /* Monster float animation */
+  .animate-monster-float {
+    animation: monster-float 3s ease-in-out infinite;
+  }
+  
+  /* Thumbs wiggle animation */
+  .animate-thumbs-wiggle {
+    animation: thumbs-wiggle 0.5s ease-in-out;
+  }
+  
+  /* Celebrate animation */
+  .animate-celebrate {
+    animation: celebrate 0.6s ease-in-out;
+  }
+  
+  /* Button shadow */
+  .shadow-button {
+    box-shadow: 0 4px 14px rgba(255, 91, 35, 0.3);
+  }
+  
+  .shadow-button-hover {
+    box-shadow: 0 6px 20px rgba(255, 91, 35, 0.4);
+  }
+  
+  /* Card shadow */
+  .shadow-card {
+    box-shadow: 0 4px 20px rgba(28, 23, 79, 0.08);
+  }
+}
+
+/* Keyframes */
+@keyframes monster-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes thumbs-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes celebrate {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+/* Gradient backgrounds */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #ADE6ED 0%, #F8FCFC 100%);
+}
+
+.bg-cta-gradient {
+  background: linear-gradient(135deg, #1C174F 0%, #2E2875 100%);
 }
