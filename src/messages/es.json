@@ -102,6 +102,34 @@
     "en": "English",
     "es": "Español",
     "switchTo": "Cambiar a {language}"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Página No Encontrada",
+    "description": "¡Ups! El monstruo no pudo encontrar esta página. Volvamos al camino correcto.",
+    "goHome": "Ir al Inicio",
+    "goHomeEnglish": "Go Home (English)",
+    "goHomeSpanish": "Ir al Inicio (Español)",
+    "uploadTickets": "Subir Multas",
+    "howItWorksTitle": "Cómo Funciona",
+    "howItWorksDesc": "Aprende sobre nuestro proceso",
+    "faqTitle": "Preguntas",
+    "faqDesc": "Obtén respuestas a tus preguntas",
+    "contactTitle": "Contáctanos",
+    "contactDesc": "Estamos aquí para ayudarte",
+    "monsterNotFound": "El monstruo buscó por todas partes pero no pudo encontrar esta página. ¿Tal vez fue desestimada? 😉"
+  },
+  "error": {
+    "title": "¡Ups!",
+    "heading": "Algo Salió Mal",
+    "description": "El monstruo encontró un error inesperado. ¡No te preocupes, estamos trabajando en ello!",
+    "pageError": "Algo Salió Mal",
+    "pageErrorDesc": "El monstruo encontró un error. ¡Intentemos arreglarlo!",
+    "tryAgain": "Intentar de Nuevo",
+    "goHome": "Ir al Inicio"
+  },
+  "loading": {
+    "text": "Cargando..."
   }
 }
 

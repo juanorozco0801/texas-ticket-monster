@@ -102,6 +102,34 @@
     "en": "English",
     "es": "Español",
     "switchTo": "Switch to {language}"
+  },
+  "notFound": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "Oops! The monster couldn't find this page. Let's get you back on track.",
+    "goHome": "Go Home",
+    "goHomeEnglish": "Go Home (English)",
+    "goHomeSpanish": "Ir al Inicio (Español)",
+    "uploadTickets": "Upload Tickets",
+    "howItWorksTitle": "How It Works",
+    "howItWorksDesc": "Learn about our process",
+    "faqTitle": "FAQ",
+    "faqDesc": "Get your questions answered",
+    "contactTitle": "Contact Us",
+    "contactDesc": "We're here to help",
+    "monsterNotFound": "The monster looked everywhere but couldn't find this page. Maybe it was dismissed? 😉"
+  },
+  "error": {
+    "title": "Oops!",
+    "heading": "Something Went Wrong",
+    "description": "The monster encountered an unexpected error. Don't worry, we're on it!",
+    "pageError": "Something Went Wrong",
+    "pageErrorDesc": "The monster encountered an error. Let's try to fix it!",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home"
+  },
+  "loading": {
+    "text": "Loading..."
   }
 }
 
