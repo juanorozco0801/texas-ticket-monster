@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="flex justify-center lg:justify-end order-2 lg:order-1">
               <div className="relative">
                 <Image 
-                  src="/LogoVariacion3_Blanco.png" 
+                  src="/LogoPrincipalMonster.png" 
                   alt="Texas Ticket Monster Mascot"
                   width={384}
                   height={384}
@@ -54,7 +54,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Side - Content */}
-            <div className="text-center lg:text-left order-1 lg:order-2">
+            <div className="text-center order-1 lg:order-2 flex flex-col items-center">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg mb-6">
                 <Award className="w-4 h-4 text-monster-orange" />
@@ -63,26 +63,25 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Main Logo Text - Matching Banner */}
-              <div className="mb-8">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight mb-2">
-                  TEXAS
-                </h1>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight mb-2">
-                  TICKET
-                </h1>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight">
-                  MONSTER
-                </h1>
+              {/* Main Logo */}
+              <div className="mb-0 flex justify-center">
+                <Image 
+                  src="/LogoVariacion2_Blanco.png" 
+                  alt="Texas Ticket Monster Logo"
+                  width={800}
+                  height={400}
+                  priority
+                  className="w-full max-w-md md:max-w-xl lg:max-w-2xl aspect-[2/1] object-cover drop-shadow-2xl"
+                />
               </div>
 
               {/* Subheadline */}
-              <p className="text-xl md:text-2xl text-white/90 max-w-xl mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-white/90 max-w-xl mb-8 leading-relaxed mx-auto">
                 {t('heroSubtitle')}
               </p>
 
               {/* Value Props */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 mb-10 text-sm md:text-base">
+              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-10 text-sm md:text-base">
                 <div className="flex items-center gap-2 text-white bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                   <CheckCircle2 className="w-5 h-5 text-sunny-yellow" />
                   <span className="font-semibold">No Court</span>
