@@ -130,6 +130,58 @@
   },
   "loading": {
     "text": "Loading..."
+  },
+  "checkout": {
+    "title": "Review & Pay",
+    "step": "Step 2 of 2",
+    "yourInfo": "Your Information",
+    "edit": "Edit",
+    "orderSummary": "Order Summary",
+    "ticketDetails": "Ticket Details",
+    "ticketNumber": "Ticket #",
+    "basePrice": "Base Price",
+    "discountApplied": "Multi-ticket Discount",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "total": "Total",
+    "paymentMethod": "Payment Method",
+    "cardInfo": "Card Information",
+    "termsAgreement": "I agree to the Terms of Service and Privacy Policy",
+    "termsRequired": "You must agree to the terms to continue",
+    "payNow": "Pay ${amount}",
+    "processing": "Processing Payment...",
+    "securePayment": "Secure payment powered by Stripe",
+    "testMode": "Test Mode: Use card 4242 4242 4242 4242",
+    "goBack": "Back to Upload"
+  },
+  "payment": {
+    "success": {
+      "title": "Payment Successful!",
+      "subtitle": "Your tickets have been submitted",
+      "caseId": "Case ID",
+      "whatNext": "What Happens Next?",
+      "step1Title": "Review Process",
+      "step1Desc": "Our team will review your tickets within 24 hours",
+      "step2Title": "Attorney Assignment",
+      "step2Desc": "A licensed attorney will be assigned to your case",
+      "step3Title": "Court Representation",
+      "step3Desc": "We'll handle everything - no court appearance needed",
+      "step4Title": "Resolution",
+      "step4Desc": "You'll receive updates on your case status",
+      "emailSent": "A confirmation email has been sent to",
+      "downloadReceipt": "Download Receipt",
+      "backHome": "Back to Home",
+      "thankYou": "Thank you for choosing Texas Ticket Monster!"
+    },
+    "cancel": {
+      "title": "Payment Cancelled",
+      "subtitle": "Your payment was not processed",
+      "message": "No charges were made to your card. Your tickets are still saved and you can complete payment whenever you're ready.",
+      "tryAgain": "Try Again",
+      "backToUpload": "Back to Upload",
+      "needHelp": "Need help? Contact us at",
+      "phone": "1-888-TX-TICKET"
+    }
   }
 }
 

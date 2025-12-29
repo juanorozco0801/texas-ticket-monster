@@ -130,6 +130,58 @@
   },
   "loading": {
     "text": "Cargando..."
+  },
+  "checkout": {
+    "title": "Revisar y Pagar",
+    "step": "Paso 2 de 2",
+    "yourInfo": "Tu Información",
+    "edit": "Editar",
+    "orderSummary": "Resumen del Pedido",
+    "ticketDetails": "Detalles de la Multa",
+    "ticketNumber": "Multa #",
+    "basePrice": "Precio Base",
+    "discountApplied": "Descuento Múltiples Multas",
+    "subtotal": "Subtotal",
+    "discount": "Descuento",
+    "total": "Total",
+    "paymentMethod": "Método de Pago",
+    "cardInfo": "Información de la Tarjeta",
+    "termsAgreement": "Acepto los Términos de Servicio y la Política de Privacidad",
+    "termsRequired": "Debes aceptar los términos para continuar",
+    "payNow": "Pagar ${amount}",
+    "processing": "Procesando Pago...",
+    "securePayment": "Pago seguro con Stripe",
+    "testMode": "Modo de Prueba: Usa tarjeta 4242 4242 4242 4242",
+    "goBack": "Volver a Subir"
+  },
+  "payment": {
+    "success": {
+      "title": "¡Pago Exitoso!",
+      "subtitle": "Tus multas han sido enviadas",
+      "caseId": "ID del Caso",
+      "whatNext": "¿Qué Sigue?",
+      "step1Title": "Proceso de Revisión",
+      "step1Desc": "Nuestro equipo revisará tus multas en 24 horas",
+      "step2Title": "Asignación de Abogado",
+      "step2Desc": "Un abogado licenciado será asignado a tu caso",
+      "step3Title": "Representación en Corte",
+      "step3Desc": "Manejamos todo - no necesitas ir a la corte",
+      "step4Title": "Resolución",
+      "step4Desc": "Recibirás actualizaciones sobre el estado de tu caso",
+      "emailSent": "Se ha enviado un correo de confirmación a",
+      "downloadReceipt": "Descargar Recibo",
+      "backHome": "Volver al Inicio",
+      "thankYou": "¡Gracias por elegir Texas Ticket Monster!"
+    },
+    "cancel": {
+      "title": "Pago Cancelado",
+      "subtitle": "Tu pago no fue procesado",
+      "message": "No se realizaron cargos a tu tarjeta. Tus multas aún están guardadas y puedes completar el pago cuando estés listo.",
+      "tryAgain": "Intentar de Nuevo",
+      "backToUpload": "Volver a Subir",
+      "needHelp": "¿Necesitas ayuda? Contáctanos al",
+      "phone": "1-888-TX-TICKET"
+    }
   }
 }
 
