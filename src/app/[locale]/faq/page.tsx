@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { faqs, getFAQsByCategory, getCategoryLabel } from '@/mocks/faqs';
 import type { FAQ } from '@/mocks/faqs';
+import Image from 'next/image';
 
 export default function FAQPage() {
   const categories: FAQ['category'][] = ['pricing', 'process', 'legal', 'general'];
@@ -13,16 +14,29 @@ export default function FAQPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-sky-cyan/10">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <Badge className="mb-4 bg-electric-blue/10 text-electric-blue hover:bg-electric-blue/20">
-            Frequently Asked Questions
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
-            Got Questions? We&apos;ve Got Answers
-          </h1>
-          <p className="text-xl text-navy-deep/70 max-w-2xl mx-auto">
-            Everything you need to know about fighting your Texas ticket
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-8">
+              <Badge className="mb-4 bg-electric-blue/10 text-electric-blue hover:bg-electric-blue/20">
+                Frequently Asked Questions
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
+                Got Questions? We&apos;ve Got Answers
+              </h1>
+              <p className="text-xl text-navy-deep/70 max-w-2xl mx-auto">
+                Everything you need to know about fighting your Texas ticket
+              </p>
+            </div>
+            <div className="flex justify-center gap-8">
+              <Image 
+                src="/doubtMonster.png"
+                alt="FAQ Monster"
+                width={300}
+                height={300}
+                className="animate-monster-float"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

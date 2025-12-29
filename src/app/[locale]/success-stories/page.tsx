@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
 import { successStories, getStoriesByCategory, getOutcomeLabel } from '@/mocks/successStories';
 import type { TicketType } from '@/mocks/pricing';
+import Image from 'next/image';
 
 export default function SuccessStoriesPage() {
   const t = useTranslations('nav');
@@ -20,16 +21,29 @@ export default function SuccessStoriesPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-sky-cyan/10">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <Badge className="mb-4 bg-green-500/10 text-green-700 hover:bg-green-500/20">
-            Real Results
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
-            Success Stories
-          </h1>
-          <p className="text-xl text-navy-deep/70 max-w-2xl mx-auto">
-            See how we&apos;ve helped thousands of Texans fight their tickets
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="order-2 lg:order-1 flex justify-center">
+              <Image 
+                src="/judgeMonster.png"
+                alt="Success Monster"
+                width={350}
+                height={350}
+                className="animate-monster-float"
+              />
+            </div>
+            <div className="text-center lg:text-left order-1 lg:order-2">
+              <Badge className="mb-4 bg-green-500/10 text-green-700 hover:bg-green-500/20">
+                Real Results
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
+                Success Stories
+              </h1>
+              <p className="text-xl text-navy-deep/70">
+                See how we&apos;ve helped thousands of Texans fight their tickets
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -49,6 +63,15 @@ export default function SuccessStoriesPage() {
 
             {categories.map((cat) => (
               <TabsContent key={cat.value} value={cat.value}>
+                <div className="flex justify-center mb-8">
+                  <Image 
+                    src="/ticketEater.png"
+                    alt="Success Icon"
+                    width={100}
+                    height={100}
+                    className="opacity-20"
+                  />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {getStoriesByCategory(cat.value).map((story) => (
                     <Card key={story.id} className="hover:shadow-xl transition-shadow">

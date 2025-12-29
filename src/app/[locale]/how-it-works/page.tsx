@@ -4,6 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Upload, CreditCard, CheckCircle2, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HowItWorksPage() {
   const t = useTranslations('howItWorks');
@@ -37,16 +38,29 @@ export default function HowItWorksPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-sky-cyan/10">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <Badge className="mb-4 bg-monster-orange/10 text-monster-orange hover:bg-monster-orange/20">
-            Simple Process
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
-            {t('title')}
-          </h1>
-          <p className="text-xl text-navy-deep/70 max-w-2xl mx-auto">
-            {t('subtitle')}
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="text-center lg:text-left">
+              <Badge className="mb-4 bg-monster-orange/10 text-monster-orange hover:bg-monster-orange/20">
+                Simple Process
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
+                {t('title')}
+              </h1>
+              <p className="text-xl text-navy-deep/70">
+                {t('subtitle')}
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <Image 
+                src="/LogoPrincipalMonster.png"
+                alt="Texas Ticket Monster"
+                width={300}
+                height={300}
+                className="animate-monster-float"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -88,15 +102,40 @@ export default function HowItWorksPage() {
 
       {/* CTA Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-navy-deep mb-6">
-            Ready to Get Started?
-          </h2>
-          <Link href="/upload">
-            <Button size="lg" className="bg-monster-orange hover:bg-monster-orange-dark text-white px-8 py-6 text-lg">
-              {tCommon('uploadTickets')} →
-            </Button>
-          </Link>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center gap-8 mb-8">
+              <Image 
+                src="/LogoVariacion2_Naranja.png"
+                alt="Monster Icon"
+                width={80}
+                height={80}
+                className="animate-monster-float"
+              />
+              <Image 
+                src="/LogoVariacion2_Azul.png"
+                alt="Monster Icon"
+                width={80}
+                height={80}
+                className="animate-monster-float" style={{ animationDelay: '0.3s' }}
+              />
+              <Image 
+                src="/LogoVariacion2_Amarillo.png"
+                alt="Monster Icon"
+                width={80}
+                height={80}
+                className="animate-monster-float" style={{ animationDelay: '0.6s' }}
+              />
+            </div>
+            <h2 className="text-3xl font-bold text-navy-deep mb-6">
+              Ready to Get Started?
+            </h2>
+            <Link href="/upload">
+              <Button size="lg" className="bg-monster-orange hover:bg-monster-orange-dark text-white px-8 py-6 text-lg">
+                {tCommon('uploadTickets')} →
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

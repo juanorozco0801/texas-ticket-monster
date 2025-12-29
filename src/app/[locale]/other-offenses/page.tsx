@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { pricing } from '@/mocks/pricing';
+import Image from 'next/image';
 
 export default function OtherOffensesPage() {
   const tServices = useTranslations('services');
@@ -25,21 +26,32 @@ export default function OtherOffensesPage() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-cta-gradient text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
-              Starting at ${pricing.other.price}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Criminal Traffic Offense Defense
-            </h1>
-            <p className="text-xl mb-8 text-white/90">
-              {tServices('other.description')}
-            </p>
-            <Link href="/upload">
-              <Button size="lg" className="bg-sunny-yellow text-navy-deep hover:bg-sunny-yellow-light px-8 py-6 text-lg">
-                Upload Your Ticket →
-              </Button>
-            </Link>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="text-center lg:text-left">
+              <Badge className="mb-4 bg-white/20 text-white hover:bg-white/30">
+                Starting at ${pricing.other.price}
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Criminal Traffic Offense Defense
+              </h1>
+              <p className="text-xl mb-8 text-white/90">
+                {tServices('other.description')}
+              </p>
+              <Link href="/upload">
+                <Button size="lg" className="bg-sunny-yellow text-navy-deep hover:bg-sunny-yellow-light px-8 py-6 text-lg">
+                  Upload Your Ticket →
+                </Button>
+              </Link>
+            </div>
+            <div className="flex justify-center">
+              <Image 
+                src="/LogoPrincipal_Amarillo.png"
+                alt="Criminal Defense"
+                width={350}
+                height={350}
+                className="animate-monster-float"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -48,9 +60,18 @@ export default function OtherOffensesPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-8">
-              <AlertTriangle className="w-8 h-8 text-monster-orange" />
-              <h2 className="text-3xl font-bold text-navy-deep">Expert Defense for Serious Charges</h2>
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <AlertTriangle className="w-8 h-8 text-monster-orange" />
+                <h2 className="text-3xl font-bold text-navy-deep">Expert Defense for Serious Charges</h2>
+              </div>
+              <Image 
+                src="/LogoVariacion3_Amarillo.png"
+                alt="Warning"
+                width={80}
+                height={80}
+                className="hidden md:block"
+              />
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -96,6 +117,22 @@ export default function OtherOffensesPage() {
         <div className="container mx-auto px-4">
           <Card className="max-w-2xl mx-auto text-center p-8 bg-gradient-to-br from-sky-cyan/20 to-white border-2 border-sky-cyan">
             <CardContent className="space-y-6 pt-6">
+              <div className="flex justify-center gap-6">
+                <Image 
+                  src="/LogoVariacion2_Azul.png"
+                  alt="Support"
+                  width={90}
+                  height={90}
+                  className="animate-monster-float"
+                />
+                <Image 
+                  src="/LogoVariacion2_Naranja.png"
+                  alt="Defense"
+                  width={90}
+                  height={90}
+                  className="animate-monster-float" style={{ animationDelay: '0.4s' }}
+                />
+              </div>
               <h2 className="text-3xl font-bold text-navy-deep">
                 Don't Face Serious Charges Alone
               </h2>

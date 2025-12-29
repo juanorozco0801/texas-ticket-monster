@@ -17,6 +17,7 @@ import { pricing } from '@/mocks/pricing';
 import { TicketList } from '@/components/flow/TicketList';
 import { PriceSummary } from '@/components/flow/PriceSummary';
 import { Upload, Plus, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 export default function UploadPage() {
   const router = useRouter();
@@ -107,15 +108,35 @@ export default function UploadPage() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="max-w-5xl mx-auto mb-8">
-          <Badge className="mb-4 bg-monster-orange/10 text-monster-orange">
-            Step 1 of 2
-          </Badge>
-          <h1 className="text-3xl md:text-4xl font-bold text-navy-deep mb-2">
-            Upload Your Tickets
-          </h1>
-          <p className="text-lg text-navy-deep/70">
-            Add one or more tickets and we&apos;ll calculate your total. Get 15% off each additional ticket!
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+            <div>
+              <Badge className="mb-4 bg-monster-orange/10 text-monster-orange">
+                Step 1 of 2
+              </Badge>
+              <h1 className="text-3xl md:text-4xl font-bold text-navy-deep mb-2">
+                Upload Your Tickets
+              </h1>
+              <p className="text-lg text-navy-deep/70">
+                Add one or more tickets and we&apos;ll calculate your total. Get 15% off each additional ticket!
+              </p>
+            </div>
+            <div className="flex justify-center gap-4">
+              <Image 
+                src="/LogoVariacion2_Naranja.png"
+                alt="Upload"
+                width={100}
+                height={100}
+                className="animate-monster-float"
+              />
+              <Image 
+                src="/LogoVariacion2_Azul.png"
+                alt="Process"
+                width={100}
+                height={100}
+                className="animate-monster-float" style={{ animationDelay: '0.3s' }}
+              />
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -220,13 +241,24 @@ export default function UploadPage() {
             {showTicketForm && (
               <Card className="border-2 border-monster-orange/20">
                 <CardHeader>
-                  <div className="flex items-center gap-2">
-                    <Upload className="w-5 h-5 text-monster-orange" />
-                    <CardTitle>Add a Ticket</CardTitle>
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Upload className="w-5 h-5 text-monster-orange" />
+                        <CardTitle>Add a Ticket</CardTitle>
+                      </div>
+                      <CardDescription>
+                        Upload your traffic ticket (PDF, PNG, or JPG)
+                      </CardDescription>
+                    </div>
+                    <Image 
+                      src="/LogoVariacion3_Amarillo.png"
+                      alt="Ticket Upload"
+                      width={60}
+                      height={60}
+                      className="hidden md:block"
+                    />
                   </div>
-                  <CardDescription>
-                    Upload your traffic ticket (PDF, PNG, or JPG)
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form

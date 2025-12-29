@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function ContactPage() {
   const t = useTranslations('footer');
@@ -25,16 +26,28 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-sky-cyan/10">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <Badge className="mb-4 bg-monster-orange/10 text-monster-orange hover:bg-monster-orange/20">
-            Get In Touch
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
-            Contact Us
-          </h1>
-          <p className="text-xl text-navy-deep/70 max-w-2xl mx-auto">
-            Have questions? We&apos;re here to help you fight your ticket
-          </p>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <Badge className="mb-4 bg-monster-orange/10 text-monster-orange hover:bg-monster-orange/20">
+                Get In Touch
+              </Badge>
+              <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
+                Contact Us
+              </h1>
+              <p className="text-xl text-navy-deep/70">
+                Have questions? We&apos;re here to help you fight your ticket
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <Image 
+                src="/judgeMonster.png"
+                alt="Contact Monster"
+                width={250}
+                height={250}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -162,12 +175,35 @@ export default function ContactPage() {
 
               <Card className="bg-sky-cyan/20 border-sky-cyan">
                 <CardContent className="pt-6">
+                  <div className="flex justify-center mb-4">
+                    <Image 
+                      src="/ticketEater.png"
+                      alt="Support"
+                      width={80}
+                      height={80}
+                    />
+                  </div>
                   <h3 className="font-semibold text-navy-deep mb-2">Quick Response</h3>
                   <p className="text-sm text-navy-deep/70">
                     We typically respond to all inquiries within 24 hours during business days.
                   </p>
                 </CardContent>
               </Card>
+
+              <div className="flex justify-center gap-4">
+                <Image 
+                  src="/LogoVariacion2_Naranja.png"
+                  alt="Monster Icon"
+                  width={60}
+                  height={60}
+                />
+                <Image 
+                  src="/LogoVariacion2_Azul.png"
+                  alt="Monster Icon"
+                  width={60}
+                  height={60}
+                />
+              </div>
             </div>
           </div>
         </div>
