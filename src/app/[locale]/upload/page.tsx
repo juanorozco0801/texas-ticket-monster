@@ -16,14 +16,28 @@ import { useTicketStore, useCustomer } from '@/store/tickets.store';
 import { pricing } from '@/mocks/pricing';
 import { TicketList } from '@/components/flow/TicketList';
 import { PriceSummary } from '@/components/flow/PriceSummary';
-import { Upload, Plus, ArrowRight } from 'lucide-react';
+import { Upload, Plus, ArrowRight, Sparkles, AlertCircle, CheckCircle2, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import { useTicketExtraction } from '@/hooks/useTicketExtraction';
+import type { TicketType } from '@/mocks/pricing';
+
+
+const defaultTicketFormData = {
+  category: undefined,
+  ticketNumber: '',
+  ticketFile: undefined,
+  notes: '',
+};
 
 export default function UploadPage() {
   const router = useRouter();
   const [showTicketForm, setShowTicketForm] = useState(false);
   const customer = useCustomer();
   const { setCustomer, addTicket, ticketCount } = useTicketStore();
+  
+  // AI Extraction hook
+  const { extractTicketData, isExtracting, error: extractionError, extractedData, clearExtraction } = useTicketExtraction();
+  const [showExtractionResult, setShowExtractionResult] = useState(false);
 
   // Customer Form
   const customerForm = useForm<CustomerFormData>({
@@ -41,12 +55,7 @@ export default function UploadPage() {
   const ticketForm = useForm<TicketFormData>({
     resolver: zodResolver(ticketSchema),
     mode: 'onBlur',
-    defaultValues: {
-      category: undefined,
-      ticketNumber: '',
-      ticketFile: undefined,
-      notes: '',
-    },
+    defaultValues: defaultTicketFormData,
   });
 
   // Auto-save customer data on blur
@@ -86,13 +95,122 @@ export default function UploadPage() {
       notes: data.notes,
     });
 
-    // Reset only ticket fields
-    ticketForm.reset({
-      category: undefined,
-      ticketNumber: '',
-      ticketFile: undefined,
-      notes: '',
-    });
+    // Reset only ticket fields and clear extraction state
+    ticketForm.setValue('category', undefined);
+    ticketForm.setValue('ticketNumber', '');
+    ticketForm.setValue('ticketFile', undefined);
+    ticketForm.setValue('notes', '');
+    
+    // Clear extraction state for next ticket
+    clearExtraction();
+    setShowExtractionResult(false);
+  };
+
+  // Handle file selection and AI extraction
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file size (5MB max)
+    const MAX_SIZE = 5 * 1024 * 1024;
+    if (file.size > MAX_SIZE) {
+      alert('File size exceeds 5MB. Please upload a smaller image.');
+      e.target.value = ''; // Clear the input
+      return;
+    }
+
+    // Validate file type (images only)
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      alert('Please upload an image file (JPG, PNG, or WebP).');
+      e.target.value = ''; // Clear the input
+      return;
+    }
+
+    setShowExtractionResult(true);
+
+    // Extract ticket data with AI
+    const extractedData = await extractTicketData(file);
+
+    if (extractedData) {
+      // Auto-populate ticket number
+      if (extractedData.ticketNumber) {
+        ticketForm.setValue('ticketNumber', extractedData.ticketNumber);
+      }
+
+      // Determine category based on violation type
+      if (extractedData.violationType) {
+        const violationType = extractedData.violationType.toLowerCase();
+        let category: TicketType = 'other';
+        
+        if (violationType.includes('dui') || violationType.includes('dwi') || violationType.includes('intoxicated')) {
+          category = 'dui';
+        } else if (
+          violationType.includes('speed') || 
+          violationType.includes('traffic') ||
+          violationType.includes('red light') ||
+          violationType.includes('stop sign') ||
+          violationType.includes('signal')
+        ) {
+          category = 'traffic';
+        }
+        
+        ticketForm.setValue('category', category);
+      }
+
+      // Build comprehensive notes from extracted data
+      const notesLines: string[] = [];
+      
+      if (extractedData.violationType) {
+        notesLines.push(`Violation: ${extractedData.violationType}`);
+      }
+      if (extractedData.violationDate) {
+        notesLines.push(`Date: ${extractedData.violationDate}`);
+      }
+      if (extractedData.violationTime) {
+        notesLines.push(`Time: ${extractedData.violationTime}`);
+      }
+      if (extractedData.location) {
+        notesLines.push(`Location: ${extractedData.location}`);
+      }
+      if (extractedData.courtDate) {
+        notesLines.push(`Court Date: ${extractedData.courtDate}`);
+      }
+      if (extractedData.courtLocation) {
+        notesLines.push(`Court Location: ${extractedData.courtLocation}`);
+      }
+      if (extractedData.fineAmount) {
+        notesLines.push(`Fine Amount: $${extractedData.fineAmount}`);
+      }
+      if (extractedData.officerName) {
+        notesLines.push(`Officer: ${extractedData.officerName}`);
+      }
+      if (extractedData.officerBadge) {
+        notesLines.push(`Badge: ${extractedData.officerBadge}`);
+      }
+      if (extractedData.speedLimit && extractedData.actualSpeed) {
+        notesLines.push(`Speed: ${extractedData.actualSpeed} mph in ${extractedData.speedLimit} mph zone`);
+      }
+      if (extractedData.vehicleInfo) {
+        const vehicle = extractedData.vehicleInfo;
+        const vehicleParts: string[] = [];
+        if (vehicle.make) vehicleParts.push(vehicle.make);
+        if (vehicle.model) vehicleParts.push(vehicle.model);
+        if (vehicle.color) vehicleParts.push(vehicle.color);
+        if (vehicle.plate) vehicleParts.push(`Plate: ${vehicle.plate}`);
+        if (vehicleParts.length > 0) {
+          notesLines.push(`Vehicle: ${vehicleParts.join(' ')}`);
+        }
+      }
+      if (extractedData.notes) {
+        notesLines.push(`\nAdditional Info: ${extractedData.notes}`);
+      }
+
+      const notes = notesLines.join('\n');
+      if (notes) {
+        ticketForm.setValue('notes', notes);
+      }
+    }
   };
 
   const handleContinueToCheckout = () => {
@@ -314,16 +432,109 @@ export default function UploadPage() {
 
                     <div className="space-y-2">
                       <Label htmlFor="ticketFile">
-                        Upload Ticket <span className="text-red-500">*</span>
+                        Upload Ticket Photo <span className="text-red-500">*</span>
                       </Label>
+                      
+                      {/* AI Extraction Badge */}
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge className="bg-gradient-to-r from-electric-blue to-monster-orange text-white">
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          AI-Powered Extraction
+                        </Badge>
+                        <span className="text-xs text-navy-deep/60">
+                          We&apos;ll automatically extract ticket details
+                        </span>
+                      </div>
+
                       <Input
                         id="ticketFile"
                         type="file"
-                        accept=".pdf,.png,.jpg,.jpeg"
+                        accept="image/jpeg,image/jpg,image/png,image/webp"
                         {...ticketForm.register('ticketFile')}
+                        onChange={handleFileChange}
                       />
+
+                      {/* Extraction Loading State */}
+                      {isExtracting && (
+                        <div className="flex items-center gap-2 p-3 bg-electric-blue/10 rounded-lg border border-electric-blue/20 animate-pulse">
+                          <Loader2 className="w-4 h-4 animate-spin text-electric-blue" />
+                          <div>
+                            <p className="text-sm text-electric-blue font-medium">
+                              Analyzing ticket with AI...
+                            </p>
+                            <p className="text-xs text-electric-blue/70">
+                              This may take a few seconds
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Extraction Success */}
+                      {showExtractionResult && !isExtracting && !extractionError && extractedData && (
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
+                            <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
+                            <div className="flex-1">
+                              <p className="text-sm text-green-700 font-medium">
+                                Ticket details extracted successfully!
+                              </p>
+                              <p className="text-xs text-green-600">
+                                Please review the information below and make any necessary corrections.
+                              </p>
+                            </div>
+                          </div>
+                          
+                          {/* Show extracted data preview */}
+                          <div className="p-3 bg-sky-cyan/10 rounded-lg border border-sky-cyan/30 space-y-1">
+                            <p className="text-xs font-semibold text-navy-deep mb-2">Extracted Information:</p>
+                            {extractedData.ticketNumber && (
+                              <div className="flex items-center justify-between text-xs">
+                                <span className="text-navy-deep/70">Ticket #:</span>
+                                <span className="font-medium text-navy-deep">{extractedData.ticketNumber}</span>
+                              </div>
+                            )}
+                            {extractedData.violationType && (
+                              <div className="flex items-center justify-between text-xs">
+                                <span className="text-navy-deep/70">Violation:</span>
+                                <span className="font-medium text-navy-deep">{extractedData.violationType}</span>
+                              </div>
+                            )}
+                            {extractedData.violationDate && (
+                              <div className="flex items-center justify-between text-xs">
+                                <span className="text-navy-deep/70">Date:</span>
+                                <span className="font-medium text-navy-deep">{extractedData.violationDate}</span>
+                              </div>
+                            )}
+                            {extractedData.location && (
+                              <div className="flex items-start justify-between text-xs">
+                                <span className="text-navy-deep/70">Location:</span>
+                                <span className="font-medium text-navy-deep text-right max-w-[200px]">{extractedData.location}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Extraction Error */}
+                      {extractionError && (
+                        <div className="flex items-start gap-2 p-3 bg-red-50 rounded-lg border border-red-200">
+                          <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-sm text-red-700 font-medium">
+                              Could not extract ticket details
+                            </p>
+                            <p className="text-xs text-red-600 mt-1">
+                              {extractionError}
+                            </p>
+                            <p className="text-xs text-red-600 mt-1">
+                              Please enter the details manually below.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
                       <p className="text-xs text-navy-deep/60">
-                        Accepted: PDF, PNG, JPG (max 5MB)
+                        Accepted: JPG, PNG, WebP images only (max 5MB)
                       </p>
                       {ticketForm.formState.errors.ticketFile && (
                         <p className="text-sm text-red-600">
