@@ -148,7 +148,7 @@
     "cardInfo": "Card Information",
     "termsAgreement": "I agree to the Terms of Service and Privacy Policy",
     "termsRequired": "You must agree to the terms to continue",
-    "payNow": "Pay ${amount}",
+    "payNow": "Pay {amount}",
     "processing": "Processing Payment...",
     "securePayment": "Secure payment powered by Stripe",
     "testMode": "Test Mode: Use card 4242 4242 4242 4242",

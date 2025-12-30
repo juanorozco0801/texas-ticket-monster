@@ -55,13 +55,6 @@ export default function HomePage() {
 
             {/* Right Side - Content */}
             <div className="text-center order-1 lg:order-2 flex flex-col items-center">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg mb-6">
-                <Award className="w-4 h-4 text-monster-orange" />
-                <span className="text-sm font-semibold text-navy-deep">
-                  98% Success Rate • Since 2024
-                </span>
-              </div>
 
               {/* Main Logo */}
               <div className="mb-0 flex justify-center">

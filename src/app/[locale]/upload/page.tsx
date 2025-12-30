@@ -252,10 +252,10 @@ export default function UploadPage() {
                       </CardDescription>
                     </div>
                     <Image 
-                      src="/LogoVariacion3_Amarillo.png"
+                      src="/LogoVariacion3_Naranja.png"
                       alt="Ticket Upload"
-                      width={60}
-                      height={60}
+                      width={120}
+                      height={120}
                       className="hidden md:block"
                     />
                   </div>
@@ -357,19 +357,21 @@ export default function UploadPage() {
 
           {/* Right Column - Summary */}
           <div className="lg:col-span-1">
-            <PriceSummary />
+            <div className="sticky top-24">
+              <PriceSummary />
 
-            {/* Continue Button */}
-            {ticketCount() > 0 && (
-              <Button
-                onClick={handleContinueToCheckout}
-                size="lg"
-                className="w-full mt-6 bg-monster-orange hover:bg-monster-orange-dark"
-              >
-                Continue to Checkout
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            )}
+              {/* Continue Button */}
+              {ticketCount() > 0 && (
+                <Button
+                  onClick={handleContinueToCheckout}
+                  size="lg"
+                  className="w-full mt-6 bg-monster-orange hover:bg-monster-orange-dark"
+                >
+                  Continue to Checkout
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
