@@ -53,10 +53,10 @@ export default function HowItWorksPage() {
             </div>
             <div className="flex justify-center">
               <Image 
-                src="/LogoPrincipalMonster.png"
-                alt="Texas Ticket Monster"
-                width={300}
-                height={300}
+                src="/HOWITWORKS.png"
+                alt="How It Works"
+                width={400}
+                height={400}
                 className="animate-monster-float"
               />
             </div>
@@ -101,7 +101,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-electric-blue to-electric-blue-dark text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center gap-8 mb-8">
@@ -113,21 +113,21 @@ export default function HowItWorksPage() {
                 className="animate-monster-float"
               />
               <Image 
-                src="/LogoVariacion2_Azul.png"
+                src="/LogoVariacion2_Amarillo.png"
                 alt="Monster Icon"
                 width={80}
                 height={80}
                 className="animate-monster-float" style={{ animationDelay: '0.3s' }}
               />
               <Image 
-                src="/LogoVariacion2_Amarillo.png"
+                src="/LogoVariacion2_Blanco.png"
                 alt="Monster Icon"
                 width={80}
                 height={80}
                 className="animate-monster-float" style={{ animationDelay: '0.6s' }}
               />
             </div>
-            <h2 className="text-3xl font-bold text-navy-deep mb-6">
+            <h2 className="text-3xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
             <Link href="/upload">

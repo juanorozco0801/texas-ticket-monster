@@ -41,10 +41,10 @@ export default function ContactPage() {
             </div>
             <div className="flex justify-center">
               <Image 
-                src="/judgeMonster.png"
-                alt="Contact Monster"
-                width={250}
-                height={250}
+                src="/CONTACTUS.png"
+                alt="Contact Us"
+                width={400}
+                height={400}
               />
             </div>
           </div>

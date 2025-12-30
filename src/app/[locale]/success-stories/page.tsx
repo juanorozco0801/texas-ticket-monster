@@ -25,10 +25,10 @@ export default function SuccessStoriesPage() {
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="order-2 lg:order-1 flex justify-center">
               <Image 
-                src="/judgeMonster.png"
-                alt="Success Monster"
-                width={350}
-                height={350}
+                src="/SUCCESSSTORIES.png"
+                alt="Success Stories"
+                width={400}
+                height={400}
                 className="animate-monster-float"
               />
             </div>

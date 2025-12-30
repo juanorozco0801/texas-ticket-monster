@@ -29,10 +29,10 @@ export default function FAQPage() {
             </div>
             <div className="flex justify-center gap-8">
               <Image 
-                src="/doubtMonster.png"
-                alt="FAQ Monster"
-                width={300}
-                height={300}
+                src="/GOTQUESTIONS.png"
+                alt="FAQ"
+                width={400}
+                height={400}
                 className="animate-monster-float"
               />
             </div>

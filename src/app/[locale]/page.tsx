@@ -38,10 +38,21 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             
             {/* Left Side - Monster Image */}
-            <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+            <div className="flex justify-center lg:justify-center order-2 lg:order-1 w-full">
               <div className="relative">
+                {/* Background Text Logo */}
+                <div className="absolute inset-0 flex items-center justify-center -z-10">
+                  <Image 
+                    src="/TEXASTICKETMONSTER.png" 
+                    alt="Background Logo"
+                    width={600}
+                    height={400}
+                    className="w-[150%] h-full object-contain opacity-30"
+                  />
+                </div>
+                
                 <Image 
-                  src="/LogoPrincipalMonster.png" 
+                  src="/PAGINAPRINCIPAL.png" 
                   alt="Texas Ticket Monster Mascot"
                   width={384}
                   height={384}
@@ -49,7 +60,7 @@ export default function HomePage() {
                   className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain animate-monster-float drop-shadow-2xl"
                 />
                 {/* Glow effect behind monster */}
-                <div className="absolute inset-0 bg-monster-orange/20 rounded-full blur-3xl -z-10" />
+                <div className="absolute inset-0 bg-monster-orange/20 rounded-full blur-3xl -z-20" />
               </div>
             </div>
 
@@ -137,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-sky-cyan/10">
+      <section className="relative py-16 md:py-24 md:pb-50 bg-gradient-to-b from-white to-sky-cyan/10 overflow-hidden">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-navy-deep text-center mb-4">
             {tServices('title')}
@@ -201,6 +212,17 @@ export default function HomePage() {
               </div>
             </Link>
           </div>
+        </div>
+        
+        {/* ADD PAGINAPRINCIPAL2.png STICK TO THE BOTTOM OF THE SECTION */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px]">
+          <Image 
+            src="/PAGINAPRINCIPAL2.png" 
+            alt="Background Logo"
+            width={300}
+            height={150}
+            className="w-full h-auto object-contain"
+          />
         </div>
       </section>
 
@@ -330,8 +352,17 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16 md:py-24 bg-cta-gradient text-white">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-electric-blue to-electric-blue-dark text-white">
         <div className="container mx-auto px-4 text-center">
+          <div className="flex justify-center mb-8">
+            <Image 
+              src="/LogoVariacion1_Amarillo.png"
+              alt="Monster Icon"
+              width={300}
+              height={200}
+              className="animate-monster-float"
+            />
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {tCta('title')}
           </h2>
