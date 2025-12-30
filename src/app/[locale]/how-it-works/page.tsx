@@ -30,7 +30,7 @@ export default function HowItWorksPage() {
       icon: CheckCircle2,
       titleKey: 'step3.title',
       descKey: 'step3.description',
-      color: 'bg-green-500',
+      color: 'bg-sunny-yellow',
     },
   ];
 

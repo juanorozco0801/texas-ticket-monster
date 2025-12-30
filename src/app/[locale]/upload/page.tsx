@@ -95,11 +95,14 @@ export default function UploadPage() {
       notes: data.notes,
     });
 
-    // Reset only ticket fields and clear extraction state
-    ticketForm.setValue('category', undefined);
-    ticketForm.setValue('ticketNumber', '');
-    ticketForm.setValue('ticketFile', undefined);
-    ticketForm.setValue('notes', '');
+    // Reset ticket form to default empty state
+    ticketForm.reset(defaultTicketFormData);
+    
+    // Clear the file input element
+    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
     
     // Clear extraction state for next ticket
     clearExtraction();
@@ -388,11 +391,18 @@ export default function UploadPage() {
                         Ticket Type <span className="text-red-500">*</span>
                       </Label>
                       <Select
+                        value={ticketForm.watch('category') || ''}
                         onValueChange={(value) =>
-                          ticketForm.setValue('category', value as 'traffic' | 'dui' | 'other')
+                          ticketForm.setValue('category', value as 'traffic' | 'dui' | 'other', {
+                            shouldValidate: true,
+                            shouldDirty: true,
+                          })
                         }
                       >
-                        <SelectTrigger id="category">
+                        <SelectTrigger 
+                          id="category"
+                          className={ticketForm.formState.errors.category ? 'border-red-500' : ''}
+                        >
                           <SelectValue placeholder="Select ticket type" />
                         </SelectTrigger>
                         <SelectContent>

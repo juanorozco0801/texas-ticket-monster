@@ -256,7 +256,7 @@ export default function HomePage() {
             {/* Step 3 */}
             <div className="text-center">
               <div className="relative mb-6">
-                <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                <div className="w-20 h-20 bg-sunny-yellow rounded-full flex items-center justify-center mx-auto shadow-lg">
                   <CheckCircle2 className="w-10 h-10 text-white" />
                 </div>
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-navy-deep text-white rounded-full flex items-center justify-center font-bold text-sm">
