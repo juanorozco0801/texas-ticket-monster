@@ -156,7 +156,7 @@ export default function HomePage() {
             {tServices('title')}
           </h2>
           <p className="text-center text-navy-deep/70 mb-12 max-w-2xl mx-auto">
-            From speeding tickets to DUIs, we defend all traffic violations in Texas
+            {tServices('subtitle')}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">

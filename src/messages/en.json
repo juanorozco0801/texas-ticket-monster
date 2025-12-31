@@ -58,6 +58,7 @@
   },
   "services": {
     "title": "What Can We Fight For You?",
+    "subtitle": "From speeding tickets to DUIs, we defend all traffic violations in Texas",
     "dui": {
       "title": "DUI / DWI Defense",
       "description": "Protect your license, minimize penalties, and keep your record clean."
@@ -270,6 +271,21 @@
     "supportLabel": "Need help?",
     "supportEmail": "Contact us at support@texasticketmonster.com",
     "footerCopyright": "© {year} Texas Ticket Monster. All rights reserved."
+  },
+  "duiPage": {
+    "ctaTitle": "Ready to Fight Your DUI?",
+    "ctaDescription": "Don't face DUI charges alone. Let our experienced attorneys fight for you.",
+    "ctaButton": "Upload Your Ticket Now →"
+  },
+  "trafficTicketsPage": {
+    "ctaTitle": "Ready to Fight Your Ticket?",
+    "ctaDescription": "Upload your ticket now and let us handle the rest. No court, no hassle.",
+    "ctaButton": "Upload Your Ticket Now →"
+  },
+  "otherOffensesPage": {
+    "ctaTitle": "Don't Face Serious Charges Alone",
+    "ctaDescription": "Criminal traffic offenses can have life-changing consequences. Get expert legal help now.",
+    "ctaButton": "Upload Your Ticket Now →"
   }
 }
 

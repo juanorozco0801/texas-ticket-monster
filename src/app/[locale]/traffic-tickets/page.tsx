@@ -9,6 +9,7 @@ import Image from 'next/image';
 
 export default function TrafficTicketsPage() {
   const tServices = useTranslations('services');
+  const tTraffic = useTranslations('trafficTicketsPage');
 
   const benefits = [
     'Avoid points on your license',
@@ -134,14 +135,14 @@ export default function TrafficTicketsPage() {
                 />
               </div>
               <h2 className="text-3xl font-bold text-navy-deep">
-                Ready to Fight Your Ticket?
+                {tTraffic('ctaTitle')}
               </h2>
               <p className="text-lg text-navy-deep/70">
-                Upload your ticket now and let us handle the rest. No court, no hassle.
+                {tTraffic('ctaDescription')}
               </p>
               <Link href="/upload">
                 <Button size="lg" className="bg-monster-orange hover:bg-monster-orange-dark text-white px-8 py-6 text-lg">
-                  Upload Your Ticket Now →
+                  {tTraffic('ctaButton')}
                 </Button>
               </Link>
             </CardContent>

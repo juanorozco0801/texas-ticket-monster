@@ -337,6 +337,10 @@ For detailed information on specific features, see the `docs/` folder:
 ### Core Documentation
 - **[PROJECT_CONTEXT.md](PROJECT_CONTEXT.md)** - Complete project overview, tech stack, design system
 
+### Operations & Deployment
+- **[MIGRATION_TO_WEYMOR.md](docs/MIGRATION_TO_WEYMOR.md)** - 🔄 Migrate all services to WeyMor accounts (GitHub, Vercel, Stripe, Resend, OpenAI)
+- **[PRODUCTION_LAUNCH_CHECKLIST.md](docs/PRODUCTION_LAUNCH_CHECKLIST.md)** - 🚀 Complete requirements for production launch (database, file storage, legal, authentication)
+
 ### Feature Documentation
 - **[AI Data Extraction](docs/ai_data_extraction/)** - OpenAI Vision API setup and usage
 - **[Email Service](docs/email_service/)** - Resend + Stripe webhook configuration

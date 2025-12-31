@@ -9,6 +9,7 @@ import Image from 'next/image';
 
 export default function OtherOffensesPage() {
   const tServices = useTranslations('services');
+  const tOther = useTranslations('otherOffensesPage');
 
   const benefits = [
     'Serious charges require serious defense',
@@ -134,14 +135,14 @@ export default function OtherOffensesPage() {
                 />
               </div>
               <h2 className="text-3xl font-bold text-navy-deep">
-                Don't Face Serious Charges Alone
+                {tOther('ctaTitle')}
               </h2>
               <p className="text-lg text-navy-deep/70">
-                Criminal traffic offenses can have life-changing consequences. Get expert legal help now.
+                {tOther('ctaDescription')}
               </p>
               <Link href="/upload">
                 <Button size="lg" className="bg-monster-orange hover:bg-monster-orange-dark text-white px-8 py-6 text-lg">
-                  Upload Your Ticket Now →
+                  {tOther('ctaButton')}
                 </Button>
               </Link>
             </CardContent>
