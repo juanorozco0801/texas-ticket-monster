@@ -9,12 +9,10 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { CheckCircle, Home, Download, Mail, Clock, UserCheck, Gavel, FileCheck } from 'lucide-react';
-import Image from 'next/image';
 import { useCustomer, usePriceBreakdown, useTicketStore } from '@/store/tickets.store';
 
 export default function PaymentSuccessPage() {
   const t = useTranslations('payment.success');
-  const tCommon = useTranslations('common');
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
   
@@ -43,13 +41,22 @@ export default function PaymentSuccessPage() {
           <div className="text-center mb-8">
             <div className="inline-block mb-6 relative">
               <div className="absolute inset-0 bg-sunny-yellow/30 rounded-full blur-2xl animate-pulse"></div>
-              <Image
-                src="/LogoVariacion2_Naranja.png"
-                alt="Success"
-                width={120}
-                height={120}
-                className="relative animate-monster-float"
-              />
+              <Card className="relative border-2 border-sunny-yellow/30 shadow-lg overflow-hidden">
+                <CardContent className="p-4">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    width={300}
+                    height={300}
+                    className="rounded-lg"
+                  >
+                    <source src="/animatedMonster.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </CardContent>
+              </Card>
             </div>
             
             <div className="mb-4">
