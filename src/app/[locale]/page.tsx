@@ -32,22 +32,24 @@ export default function HomePage() {
         
         {/* Decorative Blurs */}
         <div className="absolute top-20 left-20 w-96 h-96 bg-electric-blue/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-monster-orange/20 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-electric-blue/80 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-sunny-yellow/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-monster-orange/20 rounded-full blur-3xl" />
         
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             
             {/* Left Side - Monster Image */}
             <div className="flex justify-center lg:justify-center order-2 lg:order-1 w-full">
-              <div className="relative">
+              <div className="relative w-full flex justify-center lg:justify-center">
                 {/* Background Text Logo */}
-                <div className="absolute inset-0 flex items-center justify-center -z-10">
+                <div className="absolute inset-0 flex items-center justify-center -z-10 w-full">
                   <Image 
                     src="/TEXASTICKETMONSTER.png" 
                     alt="Background Logo"
-                    width={600}
+                    width={800}
                     height={400}
-                    className="w-[150%] h-full object-contain opacity-30"
+                    className="w-full object-cover opacity-30"
                   />
                 </div>
                 
