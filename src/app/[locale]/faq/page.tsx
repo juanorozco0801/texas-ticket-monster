@@ -8,6 +8,7 @@ import type { FAQ } from '@/mocks/faqs';
 import Image from 'next/image';
 
 export default function FAQPage() {
+  const t = useTranslations('faq');
   const categories: FAQ['category'][] = ['pricing', 'process', 'legal', 'general'];
 
   return (
@@ -18,13 +19,13 @@ export default function FAQPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
               <Badge className="mb-4 bg-electric-blue/10 text-electric-blue hover:bg-electric-blue/20">
-                Frequently Asked Questions
+                {t('badge')}
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
-                Got Questions? We&apos;ve Got Answers
+                {t('title')}
               </h1>
               <p className="text-xl text-navy-deep/70 max-w-2xl mx-auto">
-                Everything you need to know about fighting your Texas ticket
+                {t('subtitle')}
               </p>
             </div>
             <div className="flex justify-center gap-8">
@@ -45,7 +46,7 @@ export default function FAQPage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <Tabs defaultValue="all" className="w-full">
             <TabsList className="grid w-full grid-cols-5 mb-8">
-              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="all">{t('all')}</TabsTrigger>
               {categories.map((cat) => (
                 <TabsTrigger key={cat} value={cat} className="capitalize">
                   {getCategoryLabel(cat, 'en')}
@@ -56,7 +57,7 @@ export default function FAQPage() {
             <TabsContent value="all">
               <Card>
                 <CardHeader>
-                  <CardTitle>All Questions</CardTitle>
+                  <CardTitle>{t('allQuestions')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <Accordion type="single" collapsible className="w-full">
@@ -84,7 +85,7 @@ export default function FAQPage() {
               <TabsContent key={cat} value={cat}>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="capitalize">{getCategoryLabel(cat, 'en')} Questions</CardTitle>
+                    <CardTitle className="capitalize">{getCategoryLabel(cat, 'en')} {t('questionsLabel')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <Accordion type="single" collapsible className="w-full">

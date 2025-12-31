@@ -27,9 +27,10 @@ export default function RootNotFound() {
               Page Not Found / Página No Encontrada
             </h2>
             
-            <p className="text-lg text-white/80 mb-8 max-w-md mx-auto">
+            <p className="text-lg text-white/80 mb-2 max-w-md mx-auto">
               Oops! The monster couldn&apos;t find this page. Let&apos;s get you back on track.
-              <br />
+            </p>
+            <p className="text-lg text-white/80 mb-8 max-w-md mx-auto">
               ¡Ups! El monstruo no pudo encontrar esta página. Volvamos al camino correcto.
             </p>
             

@@ -68,6 +68,7 @@ export async function POST(req: NextRequest) {
         customerId: customer.idNumber,
         customerName: customer.fullName,
         ticketCount: tickets.length.toString(),
+        locale: locale || 'en',
       },
       payment_method_types: ['card'],
     });

@@ -99,6 +99,7 @@ export async function POST(req: NextRequest) {
       // Extract customer info from metadata and session
       const customerName = session.metadata?.customerName || 'Valued Customer';
       const customerEmail = session.customer_email;
+      const locale = (session.metadata?.locale || 'en') as 'en' | 'es';
 
       if (!customerEmail) {
         console.error('No customer email found in session');
@@ -133,6 +134,7 @@ export async function POST(req: NextRequest) {
           caseId,
           tickets,
           total,
+          locale,
         }) as React.ReactElement,
       });
 

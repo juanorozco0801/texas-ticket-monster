@@ -8,13 +8,13 @@ import type { TicketType } from '@/mocks/pricing';
 import Image from 'next/image';
 
 export default function SuccessStoriesPage() {
-  const t = useTranslations('nav');
+  const t = useTranslations('successStories');
 
   const categories: Array<{ value: TicketType | 'all'; label: string }> = [
-    { value: 'all', label: 'All Stories' },
-    { value: 'traffic', label: 'Traffic Tickets' },
-    { value: 'dui', label: 'DUI Cases' },
-    { value: 'other', label: 'Other Offenses' },
+    { value: 'all', label: t('allStories') },
+    { value: 'traffic', label: t('trafficTickets') },
+    { value: 'dui', label: t('duiCases') },
+    { value: 'other', label: t('otherOffenses') },
   ];
 
   return (
@@ -34,13 +34,13 @@ export default function SuccessStoriesPage() {
             </div>
             <div className="text-center lg:text-left order-1 lg:order-2">
               <Badge className="mb-4 bg-green-500/10 text-green-700 hover:bg-green-500/20">
-                Real Results
+                {t('badge')}
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
-                Success Stories
+                {t('title')}
               </h1>
               <p className="text-xl text-navy-deep/70">
-                See how we&apos;ve helped thousands of Texans fight their tickets
+                {t('subtitle')}
               </p>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function SuccessStoriesPage() {
                         </div>
                         <div className="mt-3 pt-3 border-t">
                           <p className="text-sm font-semibold text-green-600">
-                            Result: {story.result.en}
+                            {t('result')}: {story.result.en}
                           </p>
                         </div>
                       </CardContent>

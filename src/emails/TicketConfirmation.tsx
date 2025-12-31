@@ -22,44 +22,95 @@ interface TicketConfirmationEmailProps {
     finalPrice: number;
   }>;
   total: number;
+  locale?: 'en' | 'es';
 }
+
+// Translations
+const translations = {
+  en: {
+    preview: 'Payment Confirmed - Case {caseId} - Texas Ticket Monster',
+    headerTitle: 'Texas Ticket Monster',
+    headerSubtitle: 'Payment Confirmed! 🎉',
+    greeting: 'Thank you, {customerName}!',
+    paymentSuccess: 'Your payment has been successfully processed. Here are your case details:',
+    caseIdLabel: 'Your Case ID',
+    orderSummary: 'Order Summary',
+    totalPaid: 'Total Paid',
+    whatNext: 'What Happens Next?',
+    step1Title: '1. Review (24-48 hours)',
+    step1Desc: 'Our legal team will review your ticket(s) and case details.',
+    step2Title: '2. Attorney Assignment',
+    step2Desc: 'An experienced Texas traffic attorney will be assigned to your case.',
+    step3Title: '3. Court Representation',
+    step3Desc: 'Your attorney will handle all court appearances and negotiations.',
+    step4Title: '4. Resolution',
+    step4Desc: "We'll keep you updated throughout the process and notify you of the final outcome.",
+    supportLabel: 'Need help?',
+    supportEmail: 'Contact us at support@texasticketmonster.com',
+    footerCopyright: '© {year} Texas Ticket Monster. All rights reserved.',
+  },
+  es: {
+    preview: 'Pago Confirmado - Caso {caseId} - Texas Ticket Monster',
+    headerTitle: 'Texas Ticket Monster',
+    headerSubtitle: '¡Pago Confirmado! 🎉',
+    greeting: '¡Gracias, {customerName}!',
+    paymentSuccess: 'Tu pago ha sido procesado exitosamente. Aquí están los detalles de tu caso:',
+    caseIdLabel: 'Tu ID de Caso',
+    orderSummary: 'Resumen del Pedido',
+    totalPaid: 'Total Pagado',
+    whatNext: '¿Qué Sigue?',
+    step1Title: '1. Revisión (24-48 horas)',
+    step1Desc: 'Nuestro equipo legal revisará tu(s) multa(s) y detalles del caso.',
+    step2Title: '2. Asignación de Abogado',
+    step2Desc: 'Un abogado experimentado de tráfico de Texas será asignado a tu caso.',
+    step3Title: '3. Representación en Corte',
+    step3Desc: 'Tu abogado manejará todas las apariciones en corte y negociaciones.',
+    step4Title: '4. Resolución',
+    step4Desc: 'Te mantendremos actualizado durante el proceso y te notificaremos del resultado final.',
+    supportLabel: '¿Necesitas ayuda?',
+    supportEmail: 'Contáctanos en support@texasticketmonster.com',
+    footerCopyright: '© {year} Texas Ticket Monster. Todos los derechos reservados.',
+  },
+};
 
 export const TicketConfirmationEmail: React.FC<TicketConfirmationEmailProps> = ({
   customerName,
   caseId,
   tickets,
   total,
+  locale = 'en',
 }) => {
   const currentYear = new Date().getFullYear();
+  const t = translations[locale];
 
   return (
     <Html>
       <Head />
-      <Preview>Payment Confirmed - Case {caseId} - Texas Ticket Monster</Preview>
+      <Preview>{t.preview.replace('{caseId}', caseId)}</Preview>
       <Body style={main}>
         <Container style={container}>
           {/* Header */}
           <Section style={header}>
-            <Heading style={headerTitle}>Texas Ticket Monster</Heading>
-            <Text style={headerSubtitle}>Payment Confirmed! 🎉</Text>
+            <Heading style={headerTitle}>{t.headerTitle}</Heading>
+            <Text style={headerSubtitle}>{t.headerSubtitle}</Text>
           </Section>
 
           {/* Main Content */}
           <Section style={content}>
-            <Heading style={greeting}>Thank you, {customerName}!</Heading>
+            <Heading style={greeting}>{t.greeting.replace('{customerName}', customerName)}</Heading>
             
             <Text style={paragraph}>
-              Your payment has been successfully processed. Here are your case details:
+              {t.paymentSuccess}
             </Text>
 
             {/* Case ID Badge */}
             <Section style={caseIdSection}>
-              <Text style={caseIdLabel}>Your Case ID</Text>
+              <Text style={caseIdLabel}>{t.caseIdLabel}</Text>
               <Text style={caseIdValue}>{caseId}</Text>
             </Section>
 
             {/* Order Summary */}
-            <Heading style={sectionHeading}>Order Summary</Heading>
+            <Heading style={sectionHeading}>{t.orderSummary}</Heading>
             
             {tickets.map((ticket, index) => (
               <Row key={index} style={ticketRow}>
@@ -76,7 +127,7 @@ export const TicketConfirmationEmail: React.FC<TicketConfirmationEmailProps> = (
 
             <Row style={totalRow}>
               <Column>
-                <Text style={totalLabel}>Total Paid</Text>
+                <Text style={totalLabel}>{t.totalPaid}</Text>
               </Column>
               <Column style={ticketPrice}>
                 <Text style={totalValue}>${total.toFixed(2)}</Text>
@@ -84,40 +135,40 @@ export const TicketConfirmationEmail: React.FC<TicketConfirmationEmailProps> = (
             </Row>
 
             {/* What's Next */}
-            <Heading style={sectionHeading}>What Happens Next?</Heading>
+            <Heading style={sectionHeading}>{t.whatNext}</Heading>
 
             <Section style={stepBox}>
-              <Text style={stepTitle}>1. Review (24-48 hours)</Text>
+              <Text style={stepTitle}>{t.step1Title}</Text>
               <Text style={stepDescription}>
-                Our legal team will review your ticket(s) and case details.
+                {t.step1Desc}
               </Text>
             </Section>
 
             <Section style={stepBox}>
-              <Text style={stepTitle}>2. Attorney Assignment</Text>
+              <Text style={stepTitle}>{t.step2Title}</Text>
               <Text style={stepDescription}>
-                An experienced Texas traffic attorney will be assigned to your case.
+                {t.step2Desc}
               </Text>
             </Section>
 
             <Section style={stepBox}>
-              <Text style={stepTitle}>3. Court Representation</Text>
+              <Text style={stepTitle}>{t.step3Title}</Text>
               <Text style={stepDescription}>
-                Your attorney will handle all court appearances and negotiations.
+                {t.step3Desc}
               </Text>
             </Section>
 
             <Section style={stepBox}>
-              <Text style={stepTitle}>4. Resolution</Text>
+              <Text style={stepTitle}>{t.step4Title}</Text>
               <Text style={stepDescription}>
-                We'll keep you updated throughout the process and notify you of the final outcome.
+                {t.step4Desc}
               </Text>
             </Section>
 
             {/* Support Section */}
             <Section style={supportSection}>
               <Text style={supportText}>
-                <strong>Need help?</strong> Contact us at support@texasticketmonster.com
+                <strong>{t.supportLabel}</strong> {t.supportEmail}
               </Text>
             </Section>
           </Section>
@@ -125,7 +176,7 @@ export const TicketConfirmationEmail: React.FC<TicketConfirmationEmailProps> = (
           {/* Footer */}
           <Section style={footer}>
             <Text style={footerText}>
-              © {currentYear} Texas Ticket Monster. All rights reserved.
+              {t.footerCopyright.replace('{year}', currentYear.toString())}
             </Text>
           </Section>
         </Container>

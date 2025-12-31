@@ -9,6 +9,7 @@ import Image from 'next/image';
 export default function HowItWorksPage() {
   const t = useTranslations('howItWorks');
   const tCommon = useTranslations('common');
+  const tPage = useTranslations('howItWorksPage');
 
   const steps = [
     {
@@ -42,7 +43,7 @@ export default function HowItWorksPage() {
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="text-center lg:text-left">
               <Badge className="mb-4 bg-monster-orange/10 text-monster-orange hover:bg-monster-orange/20">
-                Simple Process
+                {tPage('badge')}
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-navy-deep mb-6">
                 {t('title')}
@@ -128,7 +129,7 @@ export default function HowItWorksPage() {
               />
             </div>
             <h2 className="text-3xl font-bold text-white mb-6">
-              Ready to Get Started?
+              {tPage('ctaTitle')}
             </h2>
             <Link href="/upload">
               <Button size="lg" className="bg-monster-orange hover:bg-monster-orange-dark text-white px-8 py-6 text-lg">
